@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 赋能酒店增长-营销新玩法</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .logo {
+            background-color: white;
+            text-align: center;
+            margin-bottom: 0;
+        }
+
+        .logo img {
+            max-height: 120px;
+            width: auto;
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
+        }
+
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a237e, #0d47a1, #283593);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #00c853, #64dd17);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .course-modules {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 3rem;
+            padding: 5rem 0;
+            margin: 0 auto;
+            max-width: 1400px;
+        }
+
+        .module-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            cursor: pointer;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            backdrop-filter: blur(10px);
+        }
+
+        .module-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+            border-color: rgba(0, 0, 0, 0.08);
+        }
+
+        .signup-section {
+            background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            margin: 3rem auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .signup-section h2 {
+            color: #1a237e;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .signup-section p {
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-size: 1rem;
+            line-height: 1.4;
+        }
+
+        .qr-codes {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .qr-code {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .qr-code:hover {
+            transform: translateY(-5px);
+        }
+
+        .qr-code img {
+            width: 180px;
+            height: 180px;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .qr-code p {
+            color: #1a237e;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .module-card i {
+            font-size: 2.5rem;
+            color: #1a237e;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .module-card h3 {
+            color: #1a237e;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .module-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(135deg, #1a237e, #0d47a1, #283593);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, #0d47a1, #1a237e);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="logo">
+        <img src="./images/logo.jpg" alt="AI酒旅实验室Logo">
+    </div>
+    <header>
+        <div class="container">
+            <h1>AI 赋能酒店增长-营销新玩法</h1>
+            <p>探索AI如何革新酒店营销，提升业务增长</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="course-modules">
+            <div class="module-card">
+                <i class="fas fa-robot"></i>
+                <h3>AI在酒店营销中的应用</h3>
+                <p>深入探讨AI技术如何重塑酒店营销策略，包括智能营销自动化、个性化推荐系统、用户行为分析等核心应用。通过实际案例，了解AI如何提升获客效率、优化转化率，并建立长期客户关系。</p>
+                <a href="ai-marketing.html" class="btn">开始学习</a>
+            </div>
+
+            <div class="module-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>AI优化酒店渠道管理</h3>
+                <p>全面掌握AI在酒店分销渠道管理中的应用，包括智能定价策略、库存管理优化、跨平台数据整合等。学习如何利用AI技术提升OTA排名、优化转化率，实现收益最大化。</p>
+                <a href="ai-channel.html" class="btn">开始学习</a>
+            </div>
+
+            <div class="module-card">
+                <i class="fas fa-pen-fancy"></i>
+                <h3>AI驱动的内容生成</h3>
+                <p>掌握使用AI技术创建引人入胜的营销内容，包括房型描述、促销文案、社交媒体帖子等。学习如何利用NLP技术优化SEO，提升内容质量和效率，建立品牌差异化优势。</p>
+                <a href="ai-content.html" class="btn">开始学习</a>
+            </div>
+
+            <div class="module-card">
+                <i class="fas fa-comments"></i>
+                <h3>聊天机器人与智能助手</h3>
+                <p>深入了解AI客服系统的搭建和优化，包括7*24小时智能客服、多语言支持、情感分析等功能。学习如何提供个性化服务体验，提升客户满意度和运营效率。</p>
+                <a href="ai-chatbot.html" class="btn">开始学习</a>
+            </div>
+
+            <div class="module-card">
+                <i class="fas fa-chart-pie"></i>
+                <h3>AI驱动的数据分析</h3>
+                <p>系统学习AI数据分析技术，包括客户画像构建、需求预测、市场趋势分析等。掌握如何利用机器学习算法进行精准营销决策，优化运营策略，提升市场竞争力。</p>
+                <a href="ai-data.html" class="btn">开始学习</a>
+            </div>
+        </section>
+
+        <section class="signup-section">
+            <h2>立即报名</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 1rem;">锁定早鸟优惠价，开启AI赋能酒店增长之旅！</p>
+            <p style="color: #1a237e; font-weight: 500; margin-bottom: 1rem;">报名方式</p>
+            <p style="margin: 0.5rem 0; font-size: 1.1rem;">方式一：添加小助理微信：Aloha_lab</p>
+            <p style="margin: 0.5rem 0; font-size: 1.1rem;">方式二：关注公众号：AI酒旅实验室</p>
+            <div class="qr-codes">
+                <div class="qr-code">
+                    <img src="./images/wechat-qr.jpg" alt="微信二维码">
+                    <p>微信二维码</p>
+                </div>
+                <div class="qr-code">
+                    <img src="./images/wc-qr.jpg" alt="公众号二维码">
+                    <p>公众号二维码</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
