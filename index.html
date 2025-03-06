@@ -5,51 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI 赋能酒店增长-营销新玩法</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+        
+        :root {
+            --primary-color: #1a237e;
+            --primary-light: #534bae;
+            --primary-dark: #000051;
+            --accent-color: #00c853;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --text-muted: #666666;
+            --bg-light: #f8f9fa;
+            --bg-dark: #121212;
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --card-hover-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            --transition-smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        .logo {
-            background-color: white;
-            text-align: center;
-            margin-bottom: 0;
-        }
-
-        .logo img {
-            max-height: 120px;
-            width: auto;
-        }
-
-        .logo img:hover {
-            transform: scale(1.05);
-        }
-
         body {
-            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
             line-height: 1.6;
-            color: #333;
-            background-color: #f5f5f5;
-        }
-
-        header {
-            background: linear-gradient(135deg, #1a237e, #0d47a1, #283593);
-            color: white;
-            padding: 3rem 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        header::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #00c853, #64dd17);
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            overflow-x: hidden;
         }
 
         .container {
@@ -58,11 +42,125 @@
             padding: 0 20px;
         }
 
+        /* 导航栏 */
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 15px 0;
+            transition: var(--transition-smooth);
+        }
+
+        nav.scrolled {
+            padding: 10px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            max-height: 70px; /* 增大logo尺寸 */
+            max-width: 180px
+            width: auto;
+            object-fit: contain
+            transition: var(--transition-smooth);
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
+        }
+
+        /* 头部区域 */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark), var(--primary-light));
+            color: var(--text-light);
+            padding: 6rem 0 8rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            margin-bottom: 4rem;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('images/pattern.svg');
+            opacity: 0.1;
+            z-index: 1;
+        }
+
+        header .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        header p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.2s forwards;
+            opacity: 0;
+        }
+
+        /* 课程模块 */
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            margin: 1.5rem auto 0;
+            border-radius: 2px;
+        }
+
         .course-modules {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 3rem;
-            padding: 5rem 0;
+            padding: 2rem 0 5rem;
             margin: 0 auto;
             max-width: 1400px;
         }
@@ -71,129 +169,353 @@
             background: white;
             border-radius: 20px;
             padding: 3rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--card-shadow);
+            transition: var(--transition-smooth);
             position: relative;
             cursor: pointer;
             border: 1px solid rgba(0, 0, 0, 0.03);
             backdrop-filter: blur(10px);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .module-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
         }
 
         .module-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+            box-shadow: var(--card-hover-shadow);
             border-color: rgba(0, 0, 0, 0.08);
         }
 
-        .signup-section {
-            background: linear-gradient(to bottom, #ffffff, #f8f9fa);
-            border-radius: 20px;
-            padding: 2rem;
-            text-align: center;
-            margin: 3rem auto;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            max-width: 800px;
-            position: relative;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .signup-section h2 {
-            color: #1a237e;
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
-        }
-
-        .signup-section p {
-            margin-bottom: 0.5rem;
-            color: #333;
-            font-size: 1rem;
-            line-height: 1.4;
-        }
-
-        .qr-codes {
-            display: flex;
-            justify-content: center;
-            gap: 4rem;
-            margin-top: 3rem;
-        }
-
-        .qr-code {
-            text-align: center;
-            padding: 2rem;
-            background: white;
-            border-radius: 15px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .qr-code:hover {
-            transform: translateY(-5px);
-        }
-
-        .qr-code img {
-            width: 180px;
-            height: 180px;
-            margin-bottom: 1rem;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .qr-code p {
-            color: #1a237e;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
+        .module-card:hover::before {
+            transform: scaleX(1);
         }
 
         .module-card i {
             font-size: 2.5rem;
-            color: #1a237e;
-            margin-bottom: 1rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
             display: block;
+            transition: var(--transition-smooth);
+        }
+
+        .module-card:hover i {
+            transform: scale(1.1) rotate(-5deg);
+            color: var(--accent-color);
         }
 
         .module-card h3 {
-            color: #1a237e;
+            color: var(--primary-color);
             margin-bottom: 1rem;
             font-size: 1.5rem;
+            position: relative;
         }
 
         .module-card p {
-            color: #666;
+            color: var(--text-muted);
             margin-bottom: 1.5rem;
             line-height: 1.8;
+            flex-grow: 1;
         }
 
         .btn {
             display: inline-block;
             padding: 0.8rem 1.5rem;
-            background: linear-gradient(135deg, #1a237e, #0d47a1, #283593);
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
             color: white;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 50px;
             font-weight: 500;
             transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(26, 35, 126, 0.2);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            text-align: center;
+            align-self: flex-start;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+            z-index: -1;
         }
 
         .btn:hover {
-            background: linear-gradient(135deg, #0d47a1, #1a237e);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(26, 35, 126, 0.3);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        /* 优化后的报名区域样式 */
+        .signup-section {
+            text-align: center;
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 800px;
+            margin: 4rem auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .signup-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+        }
+
+        .signup-section h2 {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .signup-section > p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        /* 优化后的联系方式卡片 */
+        .contact-cards {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .contact-card {
+            background: var(--bg-light);
+            border-radius: 20px;
+            padding: 2rem;
+            width: 280px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition-smooth);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .contact-card p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .contact-card .qr-code {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 1rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: var(--transition-smooth);
+        }
+
+        .contact-card:hover .qr-code {
+            transform: scale(1.05);
+        }
+
+        .contact-card .qr-code img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .contact-card .contact-id {
+            color: var(--accent-color);
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .signup-btn {
+            margin-top: 2rem;
+            padding: 1rem 3rem;
+            font-size: 1.2rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+        }
+
+        .signup-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(26, 35, 126, 0.4);
+        }
+
+        /* 页脚 */
+        footer {
+            background: var(--primary-dark);
+            color: var(--text-light);
+            padding: 3rem 0;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-logo img {
+            height: 60px;
+            max-width: 150px; 
+            width: auto; 
+            object-fit: contain;
+            filter: brightness(1.2) contrast(1.2);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            opacity: 0.8;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--accent-color);
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            opacity: 0.7;
+            font-size: 0.9rem;
+            text-align: center;
+            width: 100%;
+        }
+
+        /* 动画 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            header {
+                padding: 4rem 0 6rem;
+            }
+            
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .course-modules {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .signup-section {
+                padding: 2.5rem 1.5rem;
+            }
+            
+            .contact-cards {
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+            }
+            
+            .contact-card {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="logo">
-        <img src="./images/logo.jpg" alt="AI酒旅实验室Logo">
-    </div>
+    <nav id="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <img src="images/top logo.svg" alt="AI酒旅实验室Logo">
+            </div>
+            <div class="nav-links">
+                <!-- 如果需要导航链接，可以在这里添加 -->
+            </div>
+        </div>
+    </nav>
+
     <header>
         <div class="container">
             <h1>AI 赋能酒店增长-营销新玩法</h1>
-            <p>探索AI如何革新酒店营销，提升业务增长</p>
+            <p>探索AI如何革新酒店营销，提升业务增长与客户体验</p>
         </div>
     </header>
 
     <main class="container">
+        <div class="section-title">
+            <h2>课程模块</h2>
+            <p>全方位掌握AI在酒店营销中的创新应用</p>
+        </div>
+
         <section class="course-modules">
             <div class="module-card">
                 <i class="fas fa-robot"></i>
@@ -229,25 +551,89 @@
                 <p>系统学习AI数据分析技术，包括客户画像构建、需求预测、市场趋势分析等。掌握如何利用机器学习算法进行精准营销决策，优化运营策略，提升市场竞争力。</p>
                 <a href="ai-data.html" class="btn">开始学习</a>
             </div>
-        </section>
 
-        <section class="signup-section">
-            <h2>立即报名</h2>
-            <p style="font-size: 1.1rem; margin-bottom: 1rem;">锁定早鸟优惠价，开启AI赋能酒店增长之旅！</p>
-            <p style="color: #1a237e; font-weight: 500; margin-bottom: 1rem;">报名方式</p>
-            <p style="margin: 0.5rem 0; font-size: 1.1rem;">方式一：添加小助理微信 Aloha_lab</p>
-            <p style="margin: 0.5rem 0; font-size: 1.1rem;">方式二：关注公众号 AI酒旅实验室</p>
-            <div class="qr-codes">
-                <div class="qr-code">
-                    <img src="./images/wechat-qr.jpg" alt="微信二维码">
-                    <p>微信二维码</p>
-                </div>
-                <div class="qr-code">
-                    <img src="./images/wc-qr.jpg" alt="公众号二维码">
-                    <p>公众号二维码</p>
-                </div>
+            <div class="module-card">
+                <i class="fas fa-lightbulb"></i>
+                <h3>AI创新与未来趋势</h3>
+                <p>探索AI在酒店营销领域的前沿应用与未来发展方向，包括元宇宙营销、AR/VR体验、智能语音助手等创新技术。了解如何保持技术领先优势，抢占市场先机。</p>
+                <a href="ai-future.html" class="btn">开始学习</a>
             </div>
         </section>
+
+        <!-- 优化后的报名模块 -->
+        <section class="signup-section">
+            <h2>立即开启AI赋能之旅</h2>
+            <p>抢先锁定早鸟优惠，加速酒店数字化转型</p>
+            
+            <!-- 优化后的联系方式卡片 -->
+            <div class="contact-cards">
+                <div class="contact-card">
+                    <i class="fas fa-comments"></i>
+                    <h3>微信咨询</h3>
+                    <p>添加小助理微信获取课程详情</p>
+                    <div class="qr-code">
+                        <img src="images/wechat-qr.jpg" alt="微信二维码">
+                    </div>
+                    <div class="contact-id">Aloha_lab</div>
+                </div>
+                
+                <div class="contact-card">
+                    <i class="fas fa-bullhorn"></i>
+                    <h3>公众号关注</h3>
+                    <p>获取最新课程资讯与行业动态</p>
+                    <div class="qr-code">
+                        <img src="images/wc-qr.jpg" alt="公众号二维码">
+                    </div>
+                    <div class="contact-id">AI酒旅实验室</div>
+                </div>
+            </div>
+
+            <a href="#" class="btn signup-btn">立即报名</a>
+        </section>
     </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <img src="images/bottom logo.svg" alt="AI酒旅实验室Logo">
+                <p>用AI赋能酒店业数字化转型</p> <!-- 修改后的文字 -->
+            </div>
+            <div class="footer-links">
+                <a href="#">关于我们</a>
+                <a href="#">课程体系</a>
+                <a href="#">成功案例</a>
+                <a href="#">联系我们</a>
+            </div>
+            <div class="copyright">
+                &copy; 2025 AI酒旅实验室 版权所有
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 滚动时导航栏效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // 添加页面加载动画
+        document.addEventListener('DOMContentLoaded', function() {
+            const moduleCards = document.querySelectorAll('.module-card');
+            moduleCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.8s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 200 + index * 100);
+            });
+        });
+    </script>
 </body>
 </html>
